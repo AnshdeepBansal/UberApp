@@ -15,9 +15,11 @@ router.post('/login',[
     body('email').isEmail().withMessage('Invalid Email'),
     body('password').isLength({min:4}).withMessage('Password must be 4 char long')
 ],
-    userController.logInUser
+    userController.loginUser
 )
 
 router.get('/profile', authMiddleware.authUser, userController.getUserProfile)
 
+
+router.get('/logout' , authMiddleware.authUser , userController.logoutUser);
 module.exports = router;
