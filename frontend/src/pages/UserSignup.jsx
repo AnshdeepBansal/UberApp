@@ -1,13 +1,14 @@
 import React, { useState } from 'react'
 import { Link,useNavigate } from 'react-router-dom'
 import axios from 'axios';
-import {UserDataContext} from '../context/UserContext'
+import { useContext } from 'react';
+import { UserDataContext } from '../context/UserContext';
 
 const UserSignup = () => {
   const [firstName, setFirstName] = useState("")
   const [lastName, setLastName] = useState("")
   const [email,setEmail]= useState("")
-  const [pass,setPass]= useState("")
+  const [password,setPassword]= useState("")
   const [userData,setUserData]=useState({})
   const navigate= useNavigate()
   const { user, setUser } = useContext(UserDataContext)
@@ -20,7 +21,7 @@ const UserSignup = () => {
         lastname:lastName
       },
       email:email,
-      pass:pass
+      password:password
     }
     const response= await axios.post(`${import.meta.env.VITE_BASE_URL}/users/register`,newUser)
     if (response.status === 201) {
@@ -32,7 +33,7 @@ const UserSignup = () => {
     setFirstName("")
     setLastName("")
     setEmail("")
-    setPass("")
+    setPassword("")
   }
   return (
     <div className='p-7 h-screen flex flex-col justify-between'>
@@ -78,9 +79,9 @@ const UserSignup = () => {
             className='bg-[#eeeeee] mb-5 rounded px-4 py-2 w-full text-lg placeholder:text-base'
             type="password"
             placeholder='Password'
-            value={pass}
+            value={password}
               onChange={(e)=>{
-                setPass(e.target.value)
+                setPassword(e.target.value)
               }}
           />
 
