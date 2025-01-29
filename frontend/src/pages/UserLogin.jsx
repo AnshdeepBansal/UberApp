@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 const UserLogin = () => {
   const [email,setEmail]= useState("")
-  const [pass,setPass]= useState("")
+  const [password,setPassword]= useState("")
   const [userData, setUserData] = useState({})
   const {user,setUser}= useContext(UserDataContext)
   const navigate= useNavigate()
@@ -13,7 +13,7 @@ const UserLogin = () => {
     e.preventDefault()
     const userData={
       email:email,
-      pass:pass
+      password:password
     }
     const response = await axios.post(`${import.meta.env.VITE_BASE_URL}/users/login`, userData)
     if (response.status === 200) {
@@ -23,7 +23,7 @@ const UserLogin = () => {
       navigate('/home')
     } 
     setEmail("")
-    setPass("")
+    setPassword("")
   }
   return (
     <div className='p-7 h-screen flex flex-col justify-between'>
@@ -44,9 +44,9 @@ const UserLogin = () => {
 
           <input
             required
-            value={pass}
+            value={password}
             onChange={(e)=>{
-              setPass(e.target.value)
+              setPassword(e.target.value)
             }}
             className='bg-[#eeeeee] mb-7 rounded px-4 py-2 w-full text-lg placeholder:text-base'
             type="password"

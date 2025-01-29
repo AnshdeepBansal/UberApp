@@ -9,7 +9,7 @@ const CaptainSignup = () => {
   const [lastName, setLastName] = useState("")
   const [email,setEmail]= useState("")
   const [password,setPassword]= useState("")
-
+  const navigate= useNavigate()
   const [ vehicleColor, setVehicleColor ] = useState('')
   const [ vehiclePlate, setVehiclePlate ] = useState('')
   const [ vehicleCapacity, setVehicleCapacity ] = useState('')
